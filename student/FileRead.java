@@ -7,7 +7,7 @@ import java.io.IOException;
 
 public class FileRead {
     String data = "";
-    FileRead(){
+    public String dataPass(){
         File file = new File("/Volumes/naimur/java/student/std_data.txt");
 
         try (FileReader fileReader = new FileReader(file);
@@ -23,9 +23,6 @@ public class FileRead {
         } catch (IOException e) {
             System.out.println("Error reading file: " + e.getMessage());
         }
-    
-    }
-    public String dataPass(){
         return data;
     }
 }

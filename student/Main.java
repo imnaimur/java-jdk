@@ -4,7 +4,8 @@ import java.util.Scanner;
 
 public class Main {
    
-        static ArrayList<String> dbsm = new ArrayList<>();
+        static String dbsm = "";
+        // static ArrayList<String> block = new ArrayList<>();
 
     
     public static void main(String[] args) {
@@ -15,6 +16,7 @@ public class Main {
         input.nextLine();
 
         for (int i = 0;i<n;i ++){
+        String block = "";
      
 
         System.out.print("Enter Your Name: ");
@@ -25,6 +27,8 @@ public class Main {
 
         System.out.print("Enter Your Age: ");
         int age = input.nextInt();
+
+        input.nextLine();
      
         //-------------------------------------
         Student  student1 = new Student(name,age,dept);
@@ -32,15 +36,23 @@ public class Main {
         System.out.println(student1.advCourse());
         student1.addCourse("CSE110","CSE220");
         System.out.println(student1.advCourse());
-        }
 
 
-        // file hendling----------------
-
+        // file hendling---------
         FileRead fileread = new FileRead();
-        dbsm.add(fileread.dataPass());
-        // dbsm.add(student1.name);
+        dbsm += fileread.dataPass();
+        
+        String str = Integer.toString(student1.age);
+        block += student1.name + ",";
+        block += student1.dept + ",";
+        block += str+ "\n";
+        dbsm+= block;
+        
+        
+        }
         System.out.println(dbsm);
+        FileWrite write = new FileWrite(dbsm);
         input.close();
+
     }
 }
