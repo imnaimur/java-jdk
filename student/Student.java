@@ -4,59 +4,60 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Student {
-    String name,dept;
-    ArrayList<String> course;
+    String dept;
+    static String name;
+    static ArrayList<String> course;
     int age;
-    static String university = "BRAC University";
+    public static String university = "BRAC University";
     static int id = 2201000;
 
     public Student(String n,int a,String d){
-        this.name = n;
+        Student.name = n;
         this.age = a;
         this.dept = d;
         Student.id += 1;
-        this.course = new ArrayList<>();
+        Student.course = new ArrayList<>();
     }
 
     public void dispalyInfo(){
         System.out.println("\n---Student Information---");
-        System.out.println("Name: "+this.name);
+        System.out.println("Name: "+Student.name);
         System.out.println("Id: "+Student.id);
         System.out.println("Department: "+this.dept);
         System.out.println("University: "+Student.university);
     }
 
 
-    public void addCourse(String... course){
+    public static void addCourse(String... course){
 
         for(String c:course){
-            this.course.add(c);
+            Student.course.add(c);
         }
-        System.out.println("------Course added-----");
+        System.out.println("Congrualtions Course added!");
     }
 
     public String advCourse(){
         String dis;
-        int n = this.course.size();
+        int n = Student.course.size();
         if(n == 0){
             return "No course have taken";
         }
         else{
-            dis = String.join("\n",this.course);
+            dis = String.join("\n",Student.course);
             return "Course Taken: \n"+dis;
         }
     }
 
-    public String viewCourse(){
-        ArrayList<String> crs = new ArrayList<>(Arrays.asList("CSE110","CSE111","CSE220","CSE230"));
+    public static String viewCourse(){
+        ArrayList<String> crs = new ArrayList<>(Arrays.asList("1.CSE110","2.CSE111","3.CSE220","4.CSE230"));
         String ret = String.join("\n",crs);
         return "Course List: "+ret;
     }
 
     public void remCourse(String crs){
-        for(String c:this.course){
+        for(String c:Student.course){
             if(c == crs){
-                this.course.remove(crs);
+                Student.course.remove(crs);
             }
         }
     }

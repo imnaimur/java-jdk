@@ -19,9 +19,9 @@ public class FileRead {
             }
 
         } catch (FileNotFoundException e) {
-            System.out.println("File not found: " + e.getMessage());
+            FileWrite file_create = new FileWrite(data);
         } catch (IOException e) {
-            System.out.println("Error reading file: " + e.getMessage());
+            FileWrite file_create = new FileWrite(data);
         }
         return data;
     }
